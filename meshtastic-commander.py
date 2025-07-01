@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""
-keyword_listener_echo.py
- • Listens on Meshtastic TCP node (slot-0) for keywords
- • Executes the mapped shell script
- • Captures the script’s output and transmits it back to the mesh
-"""
 
 import time, json, binascii, subprocess, sys, textwrap
 from pubsub import pub
