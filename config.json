@@ -1,0 +1,11 @@
+{
+    "MESH_NODE_IP": "192.168.0.127",
+    "CHANNEL_SLOT": 0,
+    "KEYWORDS_TO_SCRIPTS": {
+        "keyword1": "/opt/meshtastic-actions/keyword1.sh",
+        "test": "/opt/meshtastic-actions/test.sh"
+    },
+    "MAX_MSG_AGE_SEC": 10,
+    "STARTUP_GRACE_SEC": 5,
+    "CHUNK_SIZE": 200
+}

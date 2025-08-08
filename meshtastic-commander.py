@@ -13,19 +13,16 @@ from pubsub import pub
 from meshtastic.tcp_interface import TCPInterface
 from meshtastic import portnums_pb2
 
-# ───────── CONFIG ──────────────────────────────────────────────────
-MESH_NODE_IP = "192.168.0.127"
-CHANNEL_SLOT = 0
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
 
-KEYWORDS_TO_SCRIPTS = {
-    "keyword1": "/opt/meshtastic-actions/keyword1.sh",
-    "test":     "/opt/meshtastic-actions/test.sh",
-}
+MESH_NODE_IP = config["MESH_NODE_IP"]
+CHANNEL_SLOT = config["CHANNEL_SLOT"]
+KEYWORDS_TO_SCRIPTS = config["KEYWORDS_TO_SCRIPTS"]
+MAX_MSG_AGE_SEC = config["MAX_MSG_AGE_SEC"]
+STARTUP_GRACE_SEC = config["STARTUP_GRACE_SEC"]
+CHUNK_SIZE = config["CHUNK_SIZE"]
 
-MAX_MSG_AGE_SEC   = 10
-STARTUP_GRACE_SEC = 5
-CHUNK_SIZE        = 200   # max safe payload per packet ≈228 B; stay conservative
-# ───────────────────────────────────────────────────────────────────
 
 VAR_RE = re.compile(r"^var:(.+)$", re.IGNORECASE)   # matches var:anything
 TEXT_PORT_VALUES = {portnums_pb2.TEXT_MESSAGE_APP, "TEXT_MESSAGE_APP"}
