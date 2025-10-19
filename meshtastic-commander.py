@@ -69,7 +69,7 @@ def on_receive(packet=None, interface=None, **kwargs):
         return
 
     dec  = packet.get("decoded", {})
-    slot = dec.get("channelIndex", 0)
+    slot = packet.get("channel", dec.get("channelIndex", 0))
     port = dec.get("portnum")
     text = dec.get("text", "").strip()
 
